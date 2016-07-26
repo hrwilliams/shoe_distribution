@@ -15,7 +15,7 @@ get("/brands") do
 end
 
 get("/stores") do
-  @stoers = Store.all()
+  @stores = Store.all()
   erb(:stores)
 end
 
