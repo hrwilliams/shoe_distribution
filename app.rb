@@ -44,9 +44,9 @@ get("/stores/:id") do
 end
 
 patch("/brands/:id") do
-  store = store.find(params.fetch("store_id").to_i())
+  store = Store.find(params.fetch("store_id").to_i())
   @brand = Brand.find(params.fetch("id").to_i())
-  @brand.store.push(store)
+  @brand.stores.push(store)
   redirect back
 end
 
