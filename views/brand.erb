@@ -1,0 +1,28 @@
+<h2>Brand: <%= @brand.name() %></h2>
+<hr>
+<h3> Currently carried in these stores:</h3>
+<ul>
+<% if @brand.stores.each() do |store| %>
+ <li><%= store.name %> </li>
+<% end %>
+</ul>
+
+<% else %>
+    <p><strong>Brand is not yet in stores.</strong></p>
+    <br>
+    <p><a href="/projects">Add a store to the database</a></p>
+<% end %>
+
+<h4>Assign brand to a store:</h4>
+<form id="update_store_id" action="/brands/<%= @brand.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input type="hidden" name="brand_id" id="brand_id" value="<%= @brand.id() %>">
+  <label for="store_select">Select the Store:  </label>
+    <br>
+  <select id="store_id" name="store_id">
+    <% @pstores.each() do |store| %>
+      <option value="<%= store.id() %>"><%= store.name() %></option>
+    <% end %>
+  </select>
+  <button type="submit">Submit</button>
+</form>
