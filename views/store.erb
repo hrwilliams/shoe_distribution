@@ -1,7 +1,7 @@
 <h2> <%= @store.name() %></h2>
 <hr>
 
-<% if @store.employees.any? %>
+<% if @store.brands.any? %>
   <h3>This store currently carries these brands:</h3>
   <ul>
     <% @store.brands.each() do |store_brand| %>

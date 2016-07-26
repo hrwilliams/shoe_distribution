@@ -20,7 +20,7 @@
   <label for="store_select">Select the Store:  </label>
     <br>
   <select id="store_id" name="store_id">
-    <% @pstores.each() do |store| %>
+    <% @stores.each() do |store| %>
       <option value="<%= store.id() %>"><%= store.name() %></option>
     <% end %>
   </select>
