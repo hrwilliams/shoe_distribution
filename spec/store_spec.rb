@@ -1,10 +1,10 @@
 require("spec_helper")
 
 describe(Store) do
-  it("has many brands") do
-    test_store = Store.create({:name => "Cool Store Bro"})
-    test_brand1 = Brand.create({:name => "Shoezies", :store_id => test_store.id})
-    test_brand2 = Brand.create({:name => "BK Knights", :store_id => test_store.id})
-    expect(test_store.brands()).to(eq([test_brand1,test_brand2]))
+  it("associaties with a brand") do
+    test_brand = Brand.create({:name => "shoe brand"})
+    test_store1 = Store.create({:name => "cool shoes bro"})
+    test_store1.brands.push(test_brand)
+    expect(test_store1.brands()).to(eq([test_brand]))
   end
 end

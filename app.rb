@@ -43,10 +43,14 @@ get("/stores/:id") do
   erb(:store)
 end
 
+
 patch("/brands/:id") do
+  # name = params.fetch("name")
   store = Store.find(params.fetch("store_id").to_i())
   @brand = Brand.find(params.fetch("id").to_i())
   @brand.stores.push(store)
+  # @brand.update({:name => name})
+  # @brands = Brand.all()
   redirect back
 end
 
@@ -57,11 +61,19 @@ patch("/stores/:id") do
   redirect back
 end
 
-# get('/brands/:id/edit') do
-#   @brand = Brand.find(params.fetch("id").to_i())
-#   erb(:brand_edit)
-# end
-#
+get('/brands/:id/edit') do
+  @brand = Brand.find(params.fetch("id").to_i())
+  erb(:brand)
+end
+
+patch("/brands/:id/edit") do
+  name = params.fetch("name")
+  erb(:brand)
+end
+
+
+
+
 # patch("/brands:id") do
 #   description = params.fetch("name")
 #   @brand= Brand.find(params.fetch("id").to_i())
