@@ -73,6 +73,11 @@ end
 
 
 
+get('/stores/:id/edit') do
+  @store = Store.find(params.fetch('id').to_i())
+  erb(:store_edit)
+end
+
 
 # patch("/brands:id") do
 #   description = params.fetch("name")
