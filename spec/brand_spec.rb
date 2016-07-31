@@ -8,3 +8,10 @@ describe(Brand) do
     expect(test_brand1.stores()).to(eq([test_store]))
   end
 end
+
+describe(Brand) do
+  it("converts the name to uppercase") do
+    brand = Brand.create({:name => "test brand"})
+    expect(brand.name()).to(eq("TEST BRAND"))
+  end
+end
