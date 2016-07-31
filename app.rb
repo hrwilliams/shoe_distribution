@@ -44,22 +44,31 @@ get("/stores/:id") do
 end
 
 
-patch("/brands/:id") do
-  # name = params.fetch("name")
-  store = Store.find(params.fetch("store_id").to_i())
-  @brand = Brand.find(params.fetch("id").to_i())
-  @brand.stores.push(store)
-  # @brand.update({:name => name})
-  # @brands = Brand.all()
-  redirect back
-end
+# patch("/brands/:id") do
+#   # name = params.fetch("name")
+#   store = Store.find(params.fetch("store_id").to_i())
+#   @brand = Brand.find(params.fetch("id").to_i())
+#   @brand.stores.push(store)
+#   # @brand.update({:name => name})
+#   # @brands = Brand.all()
+#   redirect back
+# end
 
 patch("/stores/:id") do
-  brand = Brand.find(params.fetch("brand_id").to_i())
+  name = params.fetch("name")
   @store = Store.find(params.fetch("id").to_i())
-  @store.brands.push(brand)
-  redirect back
+  @store.update({:name=> name})
+  erb('/stores')
 end
+
+# this is deleting^
+
+delete('/stores/:id') do
+  @store = Store.find(params.fetch("id").to_i())
+  @store.destroy()
+  redirect('/stores')
+end
+
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params.fetch("id").to_i())
