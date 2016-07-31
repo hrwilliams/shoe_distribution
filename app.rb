@@ -21,14 +21,22 @@ end
 
 post("/brands") do
   name = params.fetch("brand_name")
-  Brand.create({:name => name})
-  redirect("/brands")
+  @brand = Brand.create({:name => name})
+  if @brand.save()
+    redirect("/brands")
+  else
+    erb(:brand_errors)
+  end
 end
 
 post("/stores") do
   name = params.fetch("store_name")
-  Store.create({:name => name})
-  redirect("/stores")
+  @store = Store.create({:name => name})
+  if @store.save()
+    redirect("/stores")
+  else
+    erb(:store_errors)
+  end
 end
 
 get("/brands/:id") do

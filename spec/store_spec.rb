@@ -12,4 +12,9 @@ describe(Store) do
     store = Store.create({:name => "test store"})
     expect(store.name()).to(eq("TEST STORE"))
   end
+
+  it("validates presence of name") do
+   store = Store.new({:name => ""})
+   expect(store.save()).to(eq(false))
+ end
 end

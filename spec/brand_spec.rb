@@ -12,4 +12,9 @@ describe(Brand) do
     brand = Brand.create({:name => "test brand"})
     expect(brand.name()).to(eq("TEST BRAND"))
   end
+
+  it("validates presence of name") do
+   brand = Brand.new({:name => ""})
+   expect(brand.save()).to(eq(false))
+ end
 end
