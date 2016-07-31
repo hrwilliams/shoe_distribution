@@ -25,8 +25,8 @@ describe('brand functionality through application', {:type => :feature}) do
     fill_in('brand_name', :with => "Vision Street Where?")
     click_button('Add Brand')
     click_link("VISION STREET WHERE?")
-    select("Cool Shoes Bro", :from => "store_id")
+    select("COOL SHOES BRO", :from => "store_id")
     click_button("Submit")
-    expect(page).to have_content('Cool Shoes Bro')
+    expect(page).to have_content('COOL SHOES BRO')
   end
 end
